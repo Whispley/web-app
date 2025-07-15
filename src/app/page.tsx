@@ -202,7 +202,7 @@ export default function Home() {
                 </h3>
                 <p className="text-gray-600">
                   Bank-level security and compliance standards to protect your
-                  data and your customers' privacy.
+                  data and your customers&apos; privacy.
                 </p>
               </div>
             </div>
@@ -236,8 +236,8 @@ export default function Home() {
               </Link>
             </div>
             <p className="text-sm text-gray-500 mt-4">
-              No spam, ever. We'll only notify you when Whispley is ready to
-              launch.
+              No spam, ever. We&apos;ll only notify you when Whispley is ready
+              to launch.
             </p>
           </div>
         </div>

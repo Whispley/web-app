@@ -8,7 +8,6 @@ import {
   Zap,
   Gift,
   Star,
-  Bell,
   Mail,
   Smartphone,
   BarChart3,
@@ -63,10 +62,13 @@ export default function Waitlist() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="w-10 h-10 text-green-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">You're In!</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            You&apos;re In!
+          </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Thank you for joining the Whispley waitlist. We'll keep you updated
-            on our progress and notify you as soon as we're ready to launch.
+            Thank you for joining the Whispley waitlist. We&apos;ll keep you
+            updated on our progress and notify you as soon as we&apos;re ready
+            to launch.
           </p>
           <div className="space-y-4">
             <Link
@@ -139,7 +141,8 @@ export default function Waitlist() {
 
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
             Join thousands of forward-thinking businesses waiting to transform
-            their customer communication with Whispley's AI-powered platform.
+            their customer communication with Whispley&apos;s AI-powered
+            platform.
           </p>
         </div>
       </section>
@@ -378,7 +381,7 @@ export default function Waitlist() {
 
             <p className="text-sm text-gray-500 mt-6 text-center">
               By joining our waitlist, you agree to receive updates about
-              Whispley. We respect your privacy and won't spam you.
+              Whispley. We respect your privacy and won&apos;t spam you.
             </p>
           </div>
         </div>
@@ -435,8 +438,8 @@ export default function Waitlist() {
                 When will Whispley launch?
               </h3>
               <p className="text-gray-600">
-                We're currently in active development with a planned launch in
-                Q2 2024. Waitlist members will be notified first and get
+                We&apos;re currently in active development with a planned launch
+                in Q2 2024. Waitlist members will be notified first and get
                 priority access.
               </p>
             </div>

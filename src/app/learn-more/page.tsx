@@ -4,7 +4,6 @@ import {
   Database,
   Shield,
   Users,
-  Zap,
   Globe,
   CheckCircle,
   Code,
@@ -70,7 +69,7 @@ export default function LearnMore() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Whispley is more than just a communication platform—it's a
+            Whispley is more than just a communication platform—it&apos;s a
             comprehensive ecosystem designed to transform how businesses engage
             with their customers through intelligent automation and cutting-edge
             technology.
@@ -141,7 +140,7 @@ export default function LearnMore() {
           <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl text-white">
             <h3 className="text-2xl font-bold mb-4">Built for the Future</h3>
             <p className="text-blue-100 mb-6">
-              Our platform is designed with tomorrow's challenges in mind,
+              Our platform is designed with tomorrow&apos;s challenges in mind,
               incorporating the latest advances in AI, cloud computing, and
               enterprise architecture.
             </p>
@@ -424,7 +423,7 @@ export default function LearnMore() {
             Behind the Scenes
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A glimpse into the technical innovations that power Whispley's
+            A glimpse into the technical innovations that power Whispley&apos;s
             communication platform
           </p>
         </div>
@@ -506,11 +505,12 @@ export default function LearnMore() {
                 connections with their customers.
               </p>
               <p className="text-gray-600">
-                "Whispley represents my vision of how communication technology
-                should work—intelligent, intuitive, and built for the way modern
-                businesses actually operate. Every feature is designed with
-                real-world use cases in mind, backed by enterprise-grade
-                architecture that scales with your success."
+                &ldquo;Whispley represents my vision of how communication
+                technology should work—intelligent, intuitive, and built for the
+                way modern businesses actually operate. Every feature is
+                designed with real-world use cases in mind, backed by
+                enterprise-grade architecture that scales with your
+                success.&rdquo;
               </p>
             </div>
           </div>

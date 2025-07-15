@@ -76,8 +76,8 @@ export default function Features() {
 
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
             Discover the comprehensive suite of AI-powered tools and
-            enterprise-grade infrastructure that powers Whispley's communication
-            platform.
+            enterprise-grade infrastructure that powers Whispley&apos;s
+            communication platform.
           </p>
         </div>
       </section>
@@ -572,7 +572,7 @@ export default function Features() {
             Ready to Experience These Features?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join our waitlist to be the first to access Whispley's powerful
+            Join our waitlist to be the first to access Whispley&apos;s powerful
             communication platform.
           </p>
 
