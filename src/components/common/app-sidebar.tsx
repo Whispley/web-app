@@ -92,7 +92,7 @@ const data = {
       items: [
         {
           title: "Settings",
-          url: "#",
+          url: "/settings",
           icon: RiSettings3Line,
         },
         {

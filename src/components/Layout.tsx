@@ -15,8 +15,9 @@ import {
 } from "@/components/ui/sidebar";
 import UserDropdown from "@/components/common/user-dropdown";
 import FeedbackDialog from "@/components/common/feedback-dialog";
-import { RiScanLine, RiUserFollowLine } from "@remixicon/react";
+import { RiScanLine, RiUserFollowLine, RiSettings4Line } from "@remixicon/react";
 import { Outlet, useLocation, Link } from "react-router-dom";
+import ModeToggle from "@/components/common/mode-toggle";
 
 export default function Layout() {
   const location = useLocation();
@@ -28,6 +29,8 @@ export default function Layout() {
         return { title: "Dashboard", icon: RiScanLine };
       case "/contacts":
         return { title: "Contacts", icon: RiUserFollowLine };
+      case "/settings":
+        return { title: "Settings", icon: RiSettings4Line };
       default:
         return { title: "Dashboard", icon: RiScanLine };
     }
@@ -68,6 +71,7 @@ export default function Layout() {
             </Breadcrumb>
           </div>
           <div className="flex gap-3 ml-auto">
+            <ModeToggle />
             <FeedbackDialog />
             <UserDropdown />
           </div>
