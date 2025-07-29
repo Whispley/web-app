@@ -17,15 +17,18 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import {
-  RiScanLine,
-  RiBardLine,
+  RiDashboardLine,
+  RiTeamLine,
   RiUserFollowLine,
-  RiCodeSSlashLine,
-  RiLoginCircleLine,
-  RiLayoutLeftLine,
+  RiMailLine,
+  RiShieldCheckLine,
+  RiSecurePaymentLine,
+  RiBarChartLine,
   RiSettings3Line,
-  RiLeafLine,
+  RiQuestionLine,
   RiLogoutBoxLine,
+  RiGlobalLine,
+  RiCpuLine,
 } from "@remixicon/react";
 
 // This is sample data.
@@ -46,18 +49,13 @@ const data = {
   ],
   navMain: [
     {
-      title: "Sections",
+      title: "Core",
       url: "#",
       items: [
         {
           title: "Dashboard",
           url: "/dashboard",
-          icon: RiScanLine,
-        },
-        {
-          title: "Insights",
-          url: "#",
-          icon: RiBardLine,
+          icon: RiDashboardLine,
         },
         {
           title: "Contacts",
@@ -65,40 +63,61 @@ const data = {
           icon: RiUserFollowLine,
         },
         {
-          title: "Tools",
-          url: "#",
-          icon: RiCodeSSlashLine,
+          title: "Templates",
+          url: "/templates",
+          icon: RiMailLine,
         },
         {
-          title: "Integration",
-          url: "#",
-          icon: RiLoginCircleLine,
+          title: "Campaigns",
+          url: "/campaigns",
+          icon: RiGlobalLine,
         },
         {
-          title: "Layouts",
-          url: "#",
-          icon: RiLayoutLeftLine,
-        },
-        {
-          title: "Reports",
-          url: "#",
-          icon: RiLeafLine,
+          title: "Analytics",
+          url: "/analytics",
+          icon: RiBarChartLine,
         },
       ],
     },
     {
-      title: "Other",
+      title: "Management",
       url: "#",
       items: [
         {
-          title: "Settings",
+          title: "Team",
+          url: "/team",
+          icon: RiTeamLine,
+        },
+        {
+          title: "Usage & Billing",
+          url: "/billing",
+          icon: RiSecurePaymentLine,
+        },
+        {
+          title: "Authentication",
+          url: "/auth",
+          icon: RiShieldCheckLine,
+        },
+        {
+          title: "API & Webhooks",
+          url: "/api",
+          icon: RiCpuLine,
+        },
+      ],
+    },
+    {
+      title: "Settings",
+      url: "#",
+      items: [
+        {
+          title: "Account Settings",
           url: "/settings",
           icon: RiSettings3Line,
         },
         {
-          title: "Help Center",
-          url: "#",
-          icon: RiLeafLine,
+          title: "Help & Support",
+          url: "/help",
+          icon: RiQuestionLine,
         },
       ],
     },

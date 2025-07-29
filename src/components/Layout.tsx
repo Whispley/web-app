@@ -15,7 +15,11 @@ import {
 } from "@/components/ui/sidebar";
 import UserDropdown from "@/components/common/user-dropdown";
 import FeedbackDialog from "@/components/common/feedback-dialog";
-import { RiScanLine, RiUserFollowLine, RiSettings4Line } from "@remixicon/react";
+import {
+  RiScanLine,
+  RiUserFollowLine,
+  RiSettings4Line,
+} from "@remixicon/react";
 import { Outlet, useLocation, Link } from "react-router-dom";
 import ModeToggle from "@/components/common/mode-toggle";
 
@@ -41,7 +45,7 @@ export default function Layout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset className="overflow-hidden px-4 md:px-6 lg:px-8">
+      <SidebarInset className="overflow-hidden px-4">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b">
           <div className="flex flex-1 items-center gap-2 px-3">
             <SidebarTrigger className="-ms-4" />

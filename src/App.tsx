@@ -1,25 +1,32 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "@/components/Layout";
-import Dashboard from "@/pages/Dashboard";
 import Contacts from "@/pages/Contacts";
 import NotFound from "@/pages/NotFound";
+import Analytics from "@/pages/Analytics";
+import { ErrorBoundary } from "@/components/common/error-boundary";
+import Templates from "@/pages/Templates";
+import Dashboard from "@/pages/Dashboard";
+import Campaigns from "@/pages/Campaigns";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Default route redirects to dashboard */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Routes>
+          {/* Default route redirects to dashboard */}
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-        {/* Main layout with nested routes */}
-        <Route path="/" element={<Layout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="contacts" element={<Contacts />} />
-        </Route>
+          <Route path="/" element={<Layout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="campaigns" element={<Campaigns />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="templates" element={<Templates />} />
+          </Route>
 
-        {/* 404 Not Found route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }

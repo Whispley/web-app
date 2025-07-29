@@ -1,122 +1,308 @@
-import { StatsGrid } from "@/components/common/stats-grid";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { RiScanLine } from "@remixicon/react";
+import {
+  RiBarChartBoxLine,
+  RiArrowUpSLine,
+  RiArrowDownSLine,
+  RiSubtractLine,
+  RiDownloadLine,
+  RiRefreshLine,
+  RiFilterLine,
+  RiCalendarLine,
+  RiGlobalLine,
+  RiUserLine,
+  RiMailLine,
+  RiCodeLine,
+  RiServerLine,
+  RiSettingsLine,
+  RiBankCardLine,
+  RiTeamLine,
+  RiTimeLine,
+  RiEyeLine,
+} from "@remixicon/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import TransactionTable from "@/components/common/transaction-table";
+
+const quickActions = [
+  {
+    title: "Create New Template",
+    description: "Design and build new email templates",
+    icon: RiMailLine,
+    color: "bg-blue-500",
+    shortcut: "Ctrl+N",
+  },
+  {
+    title: "Generate API Key",
+    description: "Create new API keys for integrations",
+    icon: RiCodeLine,
+    color: "bg-green-500",
+    shortcut: "Ctrl+K",
+  },
+  {
+    title: "Invite Team Member",
+    description: "Add new members to your workspace",
+    icon: RiTeamLine,
+    color: "bg-purple-500",
+    shortcut: "Ctrl+I",
+  },
+  {
+    title: "View Analytics",
+    description: "Check detailed usage and performance",
+    icon: RiBarChartBoxLine,
+    color: "bg-orange-500",
+    shortcut: "Ctrl+A",
+  },
+  {
+    title: "Billing Settings",
+    description: "Manage subscription and payments",
+    icon: RiBankCardLine,
+    color: "bg-red-500",
+    shortcut: "Ctrl+B",
+  },
+  {
+    title: "Account Settings",
+    description: "Update profile and preferences",
+    icon: RiSettingsLine,
+    color: "bg-gray-500",
+    shortcut: "Ctrl+S",
+  },
+];
+
+const widgetData = [
+  {
+    title: "Active Customers",
+    value: "2,847",
+    change: "+12.5%",
+    trend: "up",
+    subtitle: "total customers",
+    icon: RiUserLine,
+    color: "text-blue-600",
+    bgColor: "bg-blue-100",
+  },
+  {
+    title: "API Usage",
+    value: "89.2K",
+    change: "-2.4%",
+    trend: "down",
+    subtitle: "requests/month",
+    icon: RiCodeLine,
+    color: "text-purple-600",
+    bgColor: "bg-purple-100",
+  },
+  {
+    title: "Email Delivery",
+    value: "99.7%",
+    change: "+0.3%",
+    trend: "up",
+    subtitle: "success rate",
+    icon: RiMailLine,
+    color: "text-orange-600",
+    bgColor: "bg-orange-100",
+  },
+  {
+    title: "System Uptime",
+    value: "99.9%",
+    change: "0%",
+    trend: "stable",
+    subtitle: "last 30 days",
+    icon: RiServerLine,
+    color: "text-emerald-600",
+    bgColor: "bg-emerald-100",
+  },
+  {
+    title: "Global Reach",
+    value: "47",
+    change: "+3",
+    trend: "up",
+    subtitle: "countries served",
+    icon: RiGlobalLine,
+    color: "text-indigo-600",
+    bgColor: "bg-indigo-100",
+  },
+];
 
 export default function Dashboard() {
   return (
-    <div className="flex flex-1 flex-col gap-4 lg:gap-6 py-4 lg:py-6">
-      {/* Page intro */}
-      <div className="flex items-center justify-between gap-4">
-        <div className="space-y-1">
-          <h1 className="text-2xl font-semibold">Dashboard Overview</h1>
-          <p className="text-sm text-muted-foreground">
-            Welcome to your dashboard! Here&rsquo;s a comprehensive overview of your business metrics and performance.
-          </p>
+    <div className="flex flex-1 flex-col gap-6 py-6">
+      {/* Header with Controls */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <Avatar className="h-12 w-12">
+            <AvatarImage src="/avatars/01.png" alt="User" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+          <div>
+            <h1 className="text-2xl font-bold">Welcome back, John!</h1>
+            <p className="text-muted-foreground">
+              Here's what's happening with your account today.
+            </p>
+          </div>
         </div>
-        <Button className="px-3">
-          <RiScanLine size={16} className="mr-2" />
-          Quick Scan
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm">
+            <RiCalendarLine className="mr-2 h-4 w-4" />
+            Last 30 Days
+          </Button>
+          <Button variant="outline" size="sm">
+            <RiFilterLine className="mr-2 h-4 w-4" />
+            Filters
+          </Button>
+          <Button variant="outline" size="sm">
+            <RiRefreshLine className="mr-2 h-4 w-4" />
+            Refresh
+          </Button>
+          <Button size="sm">
+            <RiDownloadLine className="mr-2 h-4 w-4" />
+            Export Report
+          </Button>
+        </div>
       </div>
-      
-      {/* Stats Grid */}
-      <StatsGrid
-        stats={[
-          {
-            title: "Total Revenue",
-            value: "$124,592",
-            change: {
-              value: "+18%",
-              trend: "up",
-            },
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={20}
-                height={20}
-                fill="currentColor"
-              >
-                <path d="M10 0c5.523 0 10 4.477 10 10s-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0Zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm3.833 3.337a.596.596 0 0 1 .763.067.59.59 0 0 1 .063.76c-2.18 3.046-3.38 4.678-3.598 4.897a1.5 1.5 0 0 1-2.122-2.122c.374-.373 2.005-1.574 4.894-3.602ZM15.5 9a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm-11 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm2.318-3.596a1 1 0 1 1-1.414 1.414 1 1 0 0 1 1.414-1.414ZM10 3.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" />
-              </svg>
-            ),
-          },
-          {
-            title: "Active Users",
-            value: "8,429",
-            change: {
-              value: "+24%",
-              trend: "up",
-            },
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={20}
-                height={20}
-                fill="currentColor"
-              >
-                <path d="M9 0v2.013a8.001 8.001 0 1 0 5.905 14.258l1.424 1.422A9.958 9.958 0 0 1 10 19.951c-5.523 0-10-4.478-10-10C0 4.765 3.947.5 9 0Zm10.95 10.95a9.954 9.954 0 0 1-2.207 5.329l-1.423-1.423a7.96 7.96 0 0 0 1.618-3.905h2.013ZM11.002 0c4.724.47 8.48 4.227 8.95 8.95h-2.013a8.004 8.004 0 0 0-6.937-6.937V0Z" />
-              </svg>
-            ),
-          },
-          {
-            title: "Conversion Rate",
-            value: "12.4%",
-            change: {
-              value: "+5.2%",
-              trend: "up",
-            },
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={18}
-                height={19}
-                fill="currentColor"
-              >
-                <path d="M2 9.5c0 .313.461.858 1.53 1.393C4.914 11.585 6.877 12 9 12c2.123 0 4.086-.415 5.47-1.107C15.538 10.358 16 9.813 16 9.5V7.329C14.35 8.349 11.827 9 9 9s-5.35-.652-7-1.671V9.5Zm14 2.829C14.35 13.349 11.827 14 9 14s-5.35-.652-7-1.671V14.5c0 .313.461.858 1.53 1.393C4.914 16.585 6.877 17 9 17c2.123 0 4.086-.415 5.47-1.107 1.069-.535 1.53-1.08 1.53-1.393v-2.171ZM0 14.5v-10C0 2.015 4.03 0 9 0s9 2.015 9 4.5v10c0 2.485-4.03 4.5-9 4.5s-9-2.015-9-4.5ZM9 7c2.123 0 4.086-.415 5.47-1.107C15.538 5.358 16 4.813 16 4.5c0-.313-.461-.858-1.53-1.393C13.085 2.415 11.123 2 9 2c-2.123 0-4.086.415-5.47 1.107C2.461 3.642 2 4.187 2 4.5c0 .313.461.858 1.53 1.393C4.914 6.585 6.877 7 9 7Z" />
-              </svg>
-            ),
-          },
-          {
-            title: "Growth Rate",
-            value: "23.1%",
-            change: {
-              value: "+8.1%",
-              trend: "up",
-            },
-            icon: (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={21}
-                height={21}
-                fill="currentColor"
-              >
-                <path d="m14.142.147 6.347 6.346a.5.5 0 0 1-.277.848l-1.474.23-5.656-5.657.212-1.485a.5.5 0 0 1 .848-.282ZM2.141 19.257c3.722-3.33 7.995-4.327 12.643-5.52l.446-4.017-4.297-4.298-4.018.447c-1.192 4.648-2.189 8.92-5.52 12.643L0 17.117c2.828-3.3 3.89-6.953 5.303-13.081l6.364-.708 5.657 5.657-.707 6.364c-6.128 1.415-9.782 2.475-13.081 5.304L2.14 19.258Zm5.284-6.029a2 2 0 1 1 2.828-2.828 2 2 0 0 1-2.828 2.828Z" />
-              </svg>
-            ),
-          },
-        ]}
-      />
-      
-      {/* Additional dashboard content */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-          <h3 className="text-lg font-semibold mb-2">Recent Activity</h3>
-          <p className="text-sm text-muted-foreground">
-            Track your latest business activities and updates.
-          </p>
-        </div>
-        <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-          <h3 className="text-lg font-semibold mb-2">Quick Actions</h3>
-          <p className="text-sm text-muted-foreground">
-            Access frequently used tools and shortcuts.
-          </p>
-        </div>
-        <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
-          <h3 className="text-lg font-semibold mb-2">Performance</h3>
-          <p className="text-sm text-muted-foreground">
-            Monitor your key performance indicators.
-          </p>
-        </div>
+
+      {/* KPI Widgets Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+        {widgetData.map((widget, index) => (
+          <Card
+            key={index}
+            className="relative overflow-hidden group hover:shadow-md transition-shadow"
+          >
+            <CardContent className="p-4">
+              <div className="flex items-start justify-between">
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                    {widget.title}
+                  </p>
+                  <p className="text-xl font-bold">{widget.value}</p>
+                  <div className="flex items-center text-xs">
+                    {widget.trend === "up" && (
+                      <RiArrowUpSLine className="mr-1 h-3 w-3 text-green-500" />
+                    )}
+                    {widget.trend === "down" && (
+                      <RiArrowDownSLine className="mr-1 h-3 w-3 text-red-500" />
+                    )}
+                    {widget.trend === "stable" && (
+                      <RiSubtractLine className="mr-1 h-3 w-3 text-gray-500" />
+                    )}
+                    <span
+                      className={
+                        widget.trend === "up"
+                          ? "text-green-600 font-medium"
+                          : widget.trend === "down"
+                          ? "text-red-600 font-medium"
+                          : "text-gray-600 font-medium"
+                      }
+                    >
+                      {widget.change}
+                    </span>
+                    <span className="ml-1 text-muted-foreground">
+                      {widget.subtitle}
+                    </span>
+                  </div>
+                </div>
+                <div className={`rounded-lg p-2 ${widget.bgColor}`}>
+                  <widget.icon className={`h-4 w-4 ${widget.color}`} />
+                </div>
+              </div>
+            </CardContent>
+            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </Card>
+        ))}
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-8">
+        <Card className="col-span-6">
+          <CardHeader>
+            <CardTitle>Quick Actions</CardTitle>
+            <CardDescription>
+              Frequently used tools and shortcuts
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {quickActions.map((action, index) => (
+                <Button
+                  key={index}
+                  variant="outline"
+                  className="h-auto flex-col gap-3 p-4 text-left relative group"
+                >
+                  <div className="flex items-center gap-3 w-full">
+                    <div
+                      className={`p-2 rounded-lg ${action.color} text-white`}
+                    >
+                      <action.icon className="h-4 w-4" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-medium text-sm">{action.title}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {action.description}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Badge variant="secondary" className="text-xs">
+                      {action.shortcut}
+                    </Badge>
+                  </div>
+                </Button>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="col-span-2">
+          <CardHeader>
+            <CardTitle>Quick Insights</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="rounded-full bg-blue-100 p-1">
+                  <RiArrowUpSLine className="h-3 w-3 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Peak Traffic Hour</p>
+                  <p className="text-xs text-muted-foreground">
+                    12:00 PM - 3,200 API calls
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="rounded-full bg-green-100 p-1">
+                  <RiEyeLine className="h-3 w-3 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Top Template</p>
+                  <p className="text-xs text-muted-foreground">
+                    Welcome Email - 24% usage
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="rounded-full bg-orange-100 p-1">
+                  <RiTimeLine className="h-3 w-3 text-orange-600" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Avg Response Time</p>
+                  <p className="text-xs text-muted-foreground">
+                    135ms (improved 15ms)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="min-h-[100vh] flex-1 md:min-h-min">
+        <TransactionTable />
       </div>
     </div>
   );
